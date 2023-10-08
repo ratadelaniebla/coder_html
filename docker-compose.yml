@@ -1,0 +1,35 @@
+version: '3'
+services:
+  coder-mdbaque:
+    image: ghcr.io/coder/code-server:4.17.1-bullseye
+    container_name: coder-mdbaque
+    hostname: locahost
+    user: '1000'
+    environment:
+      #- PASSWORD=""
+      - DISABLE_LOGIN_FORM=true
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - LANG=en_US.UTF-8
+      - ENTRYPOINTD=/entrypoint.d
+      - USER=coder
+    volumes:
+      #- C:\Users\marco\usuario:/home/coder/usuario:rw
+      - C:\Users\marco\containers\coder\volumenes\.config\code-server:/home/coder/.config/code-server:rw
+      - C:\Users\marco\containers\coder\volumenes\.local\share\code-server:/home/coder/.local/share/code-server:rw
+      - C:\Users\marco\containers\coder\volumenes\proyectos:/home/coder/proyectos:rw
+    working_dir: /home/coder
+    ports:
+      - "127.0.0.1:8080:8080"
+    labels:
+      - com.docker.compose.config-hash=51c89295a40ecd81e6cc5b32e546d2f6e8697a6782f44911418ffb0e673e9e48
+      - com.docker.compose.container-number=1
+      - com.docker.compose.depends_on=
+      - com.docker.compose.image=sha256:b08887a2779045046e3a8485de90b192d27fef7ea2d610f5aa87de4fce51b4ef
+      - com.docker.compose.oneoff=False
+      - com.docker.compose.project=coder
+      - com.docker.compose.project.config_files=C:\Users\marco\containers\coder\docker-compose.yml
+      - com.docker.compose.project.working_dir=C:\Users\marco\containers\coder
+      - com.docker.compose.service=code-server
+      - com.docker.compose.version=2.18.1
+    runtime: runc
+    #detach: true
